@@ -12,6 +12,12 @@ functions:
       - http:
           path: create
           method: POST
+  getData:
+    handler: functions/getData.handler
+    events:
+      - http:
+          path: get
+          method: POST
   getAllDataByPk:
     handler: functions/getAllDataByPk.handler
     events:
@@ -23,4 +29,10 @@ functions:
     events:
       - http:
           path: scan
+          method: POST
+  deleteData:
+    handler: functions/deleteData.handler
+    events:
+      - http:
+          path: delete
           method: POST
