@@ -16,5 +16,11 @@ functions:
     handler: functions/getAllDataByPk.handler
     events:
       - http:
-          path: getAllDataByPk
+          path: query
+          method: POST
+  getAllData:
+    handler: functions/getAllData.handler
+    events:
+      - http:
+          path: scan
           method: POST
