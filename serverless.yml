@@ -6,9 +6,15 @@ provider:
   runtime: nodejs14.x
 
 functions:
-  api:
-    handler: index.handler
+  createData:
+    handler: functions/create.handler
     events:
       - http:
           path: create
+          method: POST
+  getAllDataByPk:
+    handler: functions/getAllDataByPk.handler
+    events:
+      - http:
+          path: getAllDataByPk
           method: POST
