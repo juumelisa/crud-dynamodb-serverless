@@ -4,6 +4,21 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:DeleteItem
+            - dynamodb:UpdateItem
+            - dynamodb:BatchGetItem
+            - dynamodb:BatchWriteItem
+          Resource:
+            - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/studentData"
 
 functions:
   createData:
@@ -29,6 +44,12 @@ functions:
     events:
       - http:
           path: scan
+          method: POST
+  updateData:
+    handler: functions/updateData.handler
+    events:
+      - http:
+          path: update
           method: POST
   deleteData:
     handler: functions/deleteData.handler

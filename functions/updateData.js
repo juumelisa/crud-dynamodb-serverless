@@ -1,11 +1,11 @@
 'use strict';
 
-const { getDetail } = require("../lib/ddb");
+const { getDetail, updateData } = require("../lib/ddb");
 
 module.exports.handler = async(event) => {
   try{
     const body = JSON.parse(event.body);
-    const result = await getDetail(body.pk, body.id);
+    const result = await updateData(body.pk, body.id, body.dataToUpdate);
     return {
       statusCode: 200,
       body: JSON.stringify(
