@@ -57,6 +57,12 @@ functions:
       - http:
           path: delete
           method: POST
+  batchGetData:
+    handler: functions/batchGetData.handler
+    events:
+      - http:
+          path: batchGet
+          method: POST
   batchWriteData:
     handler: functions/batchWriteData.handler
     events:
